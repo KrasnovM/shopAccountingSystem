@@ -18,7 +18,7 @@ public class Product {
     private Long id;
     private String name;
     private Double price;
-    private Short amount;
+    private Long amount;
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
