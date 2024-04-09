@@ -31,6 +31,14 @@ public class ProductController {
         return mappingResponseEntityList(productService.readByCategoryId(id));
     }
 
+    @GetMapping("/category")
+    public ResponseEntity<List<Product>> readByCategoryIdInForm(@RequestParam(value = "categoryId") Long id) {
+        if (id == null) {
+            id = -1L;
+        }
+        return mappingResponseEntityList(productService.readByCategoryId(id));
+    }
+
     @PutMapping
     public ResponseEntity<Product> update(@RequestBody Product product) {
         return mappingResponseEntity(productService.update(product));
