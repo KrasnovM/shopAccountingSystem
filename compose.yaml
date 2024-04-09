@@ -1,1 +1,32 @@
 services:
+  spring:
+    container_name: spring-boot
+    build:
+      # build from Dockerfile
+      dockerfile: spring.dockerfile
+      #FROM openjdk:17
+      #COPY . /app
+      #WORKDIR /app
+      #ENTRYPOINT ["java", "-jar", "/target/shopAccountingSystem-0.0.1-SNAPSHOT.jar"]
+    ports:
+      - "8080:8080"
+    restart: always
+    volumes:
+      - /app
+  postgres:
+    container_name: postgres
+    build:
+      # build from Dockerfile
+      dockerfile: psql.dockerfile
+      #FROM postgres:latest
+      #container_name: postgres
+      #15000:5432
+      #POSTGRES_DB:shopdb
+      #POSTGRES_USER:posgres
+      #POSGRES_PASSWORD:posgres
+      #run options -m 500M —kernel-memory 50M —restart always
+    restart: always
+    environment:
+      POSTGRES_DB: "shopdb"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
