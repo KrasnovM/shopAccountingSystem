@@ -7,6 +7,8 @@ services:
       dockerfile: psql.dockerfile
       #FROM postgres:latest
       #container_name: postgres
+      #image tag: psql:13
+      #build args: PGTAG=11
       #15000:5432
       #POSTGRES_DB:shopdb
       #POSTGRES_USER:posgres
@@ -20,6 +22,8 @@ services:
 
   spring:
     container_name: spring-boot
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://postgres:5432/shopdb"
     depends_on:
       - postgres
     build:
