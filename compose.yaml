@@ -1,18 +1,5 @@
 services:
-  spring:
-    container_name: spring-boot
-    build:
-      # build from Dockerfile
-      dockerfile: spring.dockerfile
-      #FROM openjdk:17
-      #COPY . /app
-      #WORKDIR /app
-      #ENTRYPOINT ["java", "-jar", "/target/shopAccountingSystem-0.0.1-SNAPSHOT.jar"]
-    ports:
-      - "8080:8080"
-    restart: always
-    volumes:
-      - /app
+
   postgres:
     container_name: postgres
     build:
@@ -30,3 +17,20 @@ services:
       POSTGRES_DB: "shopdb"
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "postgres"
+
+  spring:
+    container_name: spring-boot
+    depends_on:
+      - postgres
+    build:
+      # build from Dockerfile
+      dockerfile: spring.dockerfile
+      #FROM openjdk:17
+      #COPY . /app
+      #WORKDIR /app
+      #ENTRYPOINT ["java", "-jar", "/target/shopAccountingSystem-0.0.1-SNAPSHOT.jar"]
+    ports:
+      - "8080:8080"
+    restart: always
+    volumes:
+      - /app
