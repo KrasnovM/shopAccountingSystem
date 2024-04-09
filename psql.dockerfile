@@ -1,2 +1,2 @@
-ARG PGTAG=latest
+ARG PGTAG=11
 FROM postgres:$PGTAG
