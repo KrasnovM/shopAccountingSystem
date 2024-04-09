@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Index page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+<p><a href="/hello">Greetings</a></p>
+<p><a href="/categories">Categories</a></p>
+<p><a href="/products">Products</a></p>
+
+<form action="/hello" method="GET" id="nameForm">
+    <div>
+        <label for="nameField">How should the app call you?</label>
+        <input name="myName" id="nameField">
+        <button>Greet!</button>
+    </div>
+</form>
+
+<br>
+
+<form action="/products/category" method="GET" id="productCategory">
+    <div>
+        <label for="nameField">Which category id is needed?</label>
+        <input name="categoryId" id="categoryIdField">
+        <button>Find id</button>
+    </div>
+</form>
+
+</body>
+</html>
