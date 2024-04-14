@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.krasnovm.shopAccountingSystem.dto.CategoryDTO;
 import ru.krasnovm.shopAccountingSystem.entity.Category;
-import ru.krasnovm.shopAccountingSystem.entity.Product;
 import ru.krasnovm.shopAccountingSystem.service.CategoryService;
 
 import java.util.List;
