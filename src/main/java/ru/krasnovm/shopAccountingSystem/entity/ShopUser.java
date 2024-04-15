@@ -13,6 +13,7 @@ public class ShopUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "serial")
     private Long id;
     @Column(unique = true)
     private String name;
