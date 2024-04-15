@@ -20,7 +20,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(ProductController.class)
-@AutoConfigureMockMvc(addFilters = false)
+@AutoConfigureMockMvc(addFilters = false)   //or @WithMockUser(username = "john", roles = { "VIEWER" }) under @Test
+                                            //and @Test(expected = AccessDeniedException.class) @WithAnonymousUser
+                                            //https://www.baeldung.com/spring-security-method-security
 class ProductControllerTest {
 
     @Autowired
