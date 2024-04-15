@@ -3,6 +3,7 @@ package ru.krasnovm.shopAccountingSystem.controller;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import ru.krasnovm.shopAccountingSystem.dto.ProductDTO;
 import ru.krasnovm.shopAccountingSystem.entity.Product;
@@ -17,6 +18,7 @@ public class ProductController {
     private final ProductService productService;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<Product> create(@RequestBody ProductDTO dto) {
         return mappingResponseEntity(productService.create(dto));
     }
@@ -40,11 +42,13 @@ public class ProductController {
     }
 
     @PutMapping
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<Product> update(@RequestBody Product product) {
         return mappingResponseEntity(productService.update(product));
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public HttpStatus delete(@PathVariable("id") Long id) {
         productService.delete(id);
         return HttpStatus.OK;
